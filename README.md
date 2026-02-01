@@ -1,11 +1,22 @@
 # Cost-Aware AI Decision System
 
-> **Transforming ML predictions into financially-optimal business decisions under real-world operational constraints**
+> **NexGen Financial Services loses $500K daily to fraud. With only 50 investigators, they were prioritizing by risk score alone - wasting resources on low-value cases. Our system optimizes for expected savings, capturing 55% more value with the same team.**
 
 [![Databricks](https://img.shields.io/badge/Platform-Databricks-orange)](https://databricks.com)
 [![Delta Lake](https://img.shields.io/badge/Storage-Delta%20Lake-blue)](https://delta.io)
 [![MLflow](https://img.shields.io/badge/ML%20Tracking-MLflow-green)](https://mlflow.org)
 [![Python](https://img.shields.io/badge/Language-Python%203.10+-yellow)](https://python.org)
+
+---
+
+## Results at a Glance
+
+| Metric | Value |
+|--------|-------|
+| **Improvement over Baseline** | +55% more savings captured |
+| **Daily Expected Savings** | ~$198,000 (vs $127,000 baseline) |
+| **Investigation Efficiency** | Optimized for ROI, not just risk |
+| **Model Performance** | ROC-AUC > 0.85 |
 
 ---
 
@@ -51,35 +62,7 @@ Consider this scenario at **NexGen Financial Services** (fictional bank):
 
 ## Architecture: Medallion Data Pipeline
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                        COST-AWARE AI DECISION SYSTEM                        │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌───────────┐ │
-│  │    BRONZE    │───▶│    SILVER    │───▶│      ML      │───▶│    GOLD   │ │
-│  │   Raw Data   │    │   Features   │    │  Prediction  │    │ Decisions │ │
-│  └──────────────┘    └──────────────┘    └──────────────┘    └───────────┘ │
-│        │                    │                   │                   │       │
-│        ▼                    ▼                   ▼                   ▼       │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌───────────┐ │
-│  │ • CSV Ingest │    │ • Log-scale  │    │ • Logistic   │    │ • Rank by │ │
-│  │ • Schema     │    │   features   │    │   Regression │    │   savings │ │
-│  │   inference  │    │ • Risk score │    │ • MLflow     │    │ • Apply   │ │
-│  │ • Delta Lake │    │ • Loss proxy │    │   tracking   │    │   capacity│ │
-│  └──────────────┘    └──────────────┘    └──────────────┘    └───────────┘ │
-│                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────────┐│
-│  │                       ANALYTICS & INSIGHTS LAYER                        ││
-│  │  • ROI Analysis  • Sensitivity Analysis  • Executive Dashboards         ││
-│  └─────────────────────────────────────────────────────────────────────────┘│
-│                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────────┐│
-│  │                            DATABASE LAYER                               ││
-│  │           Unity Catalog  │  Delta Lake  │  MLflow Registry              ││
-│  └─────────────────────────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+![Diagram](/diagrams/Architecture_diagram.png)
 
 ---
 
@@ -254,8 +237,6 @@ This project addresses all evaluation criteria:
 
 ## References
 
-- [Cost-Sensitive Learning and the Class Imbalance Problem](https://www.sciencedirect.com/topics/computer-science/cost-sensitive-learning)
-- [Fraud Detection: A Machine Learning Approach](https://www.databricks.com/solutions/financial-services)
 - [Delta Lake Documentation](https://docs.delta.io/)
 - [MLflow Model Registry](https://mlflow.org/docs/latest/model-registry.html)
 
@@ -263,9 +244,15 @@ This project addresses all evaluation criteria:
 
 ## Team
 
-- **Project Lead**: [Your Name]
+- **Project by**: Shivam Dubey
 - **Domain**: Finance & Banking / Risk Management
 - **Tools**: Databricks, Delta Lake, MLflow, PySpark
+
+---
+
+## Acknowledgments
+
+Special thanks to the contest organizers - **Indian Data Club, Databricks and Codebasics** for creating this opportunity to explore the intersection of machine learning and business decision optimization. This project was built to demonstrate how AI can deliver measurable financial impact, not just prediction accuracy.
 
 ---
 
